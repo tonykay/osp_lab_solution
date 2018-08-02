@@ -1,0 +1,13 @@
+== Working Solution to Ansible Advanced OpenStack Lab
+
+Divided into 2 directories for the 2 stages
+
+- 3_section deploy cloud and the RHEL images to openstack
+- 4_section generate in-memory inventory and deploy 3tier app
+
+Full working solution to the Ansible OpenStack cloud lab
+
+=== Issues:
+
+- Not very DRY
+- Clean up 2nd 

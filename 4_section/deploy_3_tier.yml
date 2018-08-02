@@ -1,0 +1,39 @@
+---
+- name: generate openstack in-memory inventory 
+  hosts: jumpbox
+  gather_facts: true
+  roles:
+  - name: osp-facts
+
+
+- name: common tasks
+  hosts: all
+  become: yes
+  roles:
+    - base-config
+
+# Setup front-end load balancer tier
+
+- name: setup load-balancer tier
+  hosts: frontends
+  become: yes
+  roles:
+    - lb-tier
+
+# Setup application servers tier
+
+- name: setup app tier
+  hosts: apps
+  become: yes
+  gather_facts: false
+  roles:
+    - app-tier
+
+# Setup database tier
+
+- name: setup database tier
+  become: yes
+  hosts: appdbs
+  roles:
+    - geerlingguy.postgresql
+
